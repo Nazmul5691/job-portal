@@ -2,10 +2,13 @@
 import Lottie from 'lottie-react';
 import registration from '../assets/registration.json'
 import { Form } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AuthContext from '../context/AuthContext';
 
 export default function Register() {
-    const [registerError , setRegisterError] = useState('')
+    // const [registerError , setRegisterError] = useState('')
+
+    const {createUser} = useContext(AuthContext)
 
     // function validatePassword() {
     //     var p = document.getElementById('password').value,
@@ -32,14 +35,19 @@ export default function Register() {
         e.preventDefault();
 
         const from = e.target;
-        const name = from.name.value;
+        const email = from.email.value;
         const password = from.password.value;
 
-        console.log(name, password);
+        console.log(email, password);
 
-       
-
-
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
+        
 
     }
 
@@ -54,7 +62,7 @@ export default function Register() {
                     <div className="card-body">
                         <fieldset className="fieldset">
                             <label className="fieldset-label">Email</label>
-                            <input type="email" name="name" className="input" placeholder="Email" />
+                            <input type="email" name="email" className="input" placeholder="Email" />
                             <label className="fieldset-label">Password</label>
                             <input type="password" id='password' name='password' className="input" placeholder="Password" />
 
