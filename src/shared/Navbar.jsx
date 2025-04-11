@@ -1,11 +1,27 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 export default function Navbar() {
 
+    const { user, logOutUser } = useContext(AuthContext)
+
+    const handleLogOutUser = () => {
+        logOutUser()
+            .then(result => {
+                console.log('user log out');
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
 
     const navItems = <>
-        <li><a>Home</a></li>
-        <li><a>Item 3</a></li>
+        <li><NavLink to='/'> Home </NavLink></li>
+        <li><NavLink to='/'> Home </NavLink></li>
+        <li><NavLink to='/'> Home </NavLink></li>
+
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -20,7 +36,7 @@ export default function Navbar() {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="btn btn-ghost text-xl">Job Portal</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -28,8 +44,14 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end flex gap-3 ">
-                <Link className='hover:underline hover:text-blue-600' to='/register'>Register</Link>
-                <Link to='/signIn'><button className="btn btn-soft btn-primary">Sign In</button></Link>
+                {
+                    user ? <button onClick={handleLogOutUser} className="btn btn-soft btn-primary">Logout</button> :
+                        <>
+                            <Link className='hover:underline hover:text-blue-600' to='/register'>Register</Link>
+                            <Link to='/signIn'><button className="btn btn-soft btn-primary">Sign In</button></Link>
+                        </>
+                }
+
             </div>
         </div>
     );
