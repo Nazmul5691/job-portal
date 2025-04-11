@@ -4,11 +4,12 @@ import registration from '../assets/registration.json'
 import { Form } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
+import SocialLogin from '../shared/SocialLogin';
 
 export default function Register() {
     // const [registerError , setRegisterError] = useState('')
 
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
 
     // function validatePassword() {
     //     var p = document.getElementById('password').value,
@@ -41,13 +42,13 @@ export default function Register() {
         console.log(email, password);
 
         createUser(email, password)
-        .then(result =>{
-            console.log(result.user);
-        })
-        .catch(error =>{
-            console.log(error.message);
-        })
-        
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
 
     }
 
@@ -66,7 +67,7 @@ export default function Register() {
                             <label className="fieldset-label">Password</label>
                             <input type="password" id='password' name='password' className="input" placeholder="Password" />
 
-                           {/* {
+                            {/* {
                             registerError && <p>{registerError}</p>
                            } */}
 
@@ -74,7 +75,10 @@ export default function Register() {
                             <button className="btn btn-neutral mt-4">Register</button>
                         </fieldset>
                     </div>
+                    <div className="divider">OR</div>
+                    <SocialLogin />
                 </Form>
+            
             </div>
         </div>
     );

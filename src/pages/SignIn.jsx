@@ -3,13 +3,14 @@ import registration from '../assets/registration.json'
 import Lottie from "lottie-react";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import SocialLogin from "../shared/SocialLogin";
 
 
 const SignIn = () => {
 
-    const {signInUser} = useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext)
 
-    const handleSignIn = e =>{
+    const handleSignIn = e => {
         e.preventDefault()
 
         const form = e.target
@@ -19,12 +20,12 @@ const SignIn = () => {
         console.log(email, password);
 
         signInUser(email, password)
-        .then(result =>{
-            console.log('sign in user', result.user);
-        })
-        .catch(error =>{
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log('sign in user', result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
 
@@ -48,7 +49,13 @@ const SignIn = () => {
                             <button className="btn btn-neutral mt-4">Login</button>
                         </fieldset>
                     </div>
+                    <div className="divider">OR</div>
+
+                    <SocialLogin />
+
                 </Form>
+
+
             </div>
         </div>
     );
