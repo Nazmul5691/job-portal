@@ -71,7 +71,7 @@ export default function Register() {
                            } */}
 
                             <div><a className="link link-hover">Forgot password?</a></div>
-                            <button className="btn btn-neutral mt-4">Login</button>
+                            <button className="btn btn-neutral mt-4">Register</button>
                         </fieldset>
                     </div>
                 </Form>

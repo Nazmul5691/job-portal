@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
@@ -28,8 +28,8 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end flex gap-3 ">
-                <NavLink className='hover:underline hover:text-blue-600' to='/register'>Register</NavLink>
-                <a className="btn">Sign In</a>
+                <Link className='hover:underline hover:text-blue-600' to='/register'>Register</Link>
+                <Link to='/signIn'><button className="btn btn-soft btn-primary">Sign In</button></Link>
             </div>
         </div>
     );
