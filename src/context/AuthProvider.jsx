@@ -30,16 +30,6 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
     }
 
-    const userInfo = {
-        user,
-        loading,
-        createUser,
-        signInUser,
-        socialLogIn,
-        logOutUser
-    }
-
-
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser)
@@ -50,6 +40,20 @@ const AuthProvider = ({children}) => {
             unsubscribe()
         }
     },[])
+
+   
+
+    const userInfo = {
+        user,
+        loading,
+        createUser,
+        signInUser,
+        socialLogIn,
+        logOutUser
+    }
+
+
+    
 
     return (
         <AuthContext.Provider value={userInfo}>
