@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, useLocation, useNavigate } from "react-router-dom";
 import registration from '../assets/registration.json'
 import Lottie from "lottie-react";
 import { useContext } from "react";
@@ -9,6 +9,11 @@ import SocialLogin from "../shared/SocialLogin";
 const SignIn = () => {
 
     const { signInUser } = useContext(AuthContext)
+    const location = useLocation()
+    const from = location?.state || '/'
+    const navigate = useNavigate();
+
+
 
     const handleSignIn = e => {
         e.preventDefault()
@@ -22,6 +27,7 @@ const SignIn = () => {
         signInUser(email, password)
             .then(result => {
                 console.log('sign in user', result.user);
+                navigate(from)
             })
             .catch(error => {
                 console.log(error.message);
