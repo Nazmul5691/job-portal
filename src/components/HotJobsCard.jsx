@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 const HotJobsCard = ({ job }) => {
     const { _id, title, location, jobType, salaryRange, description, company, requirements, company_logo } = job
 
-    const handleApply = id => {
-        console.log('apply button clicked');
-    }
+    
 
     return (
         <div className="card bg-base-100 py-4 px-3 flex flex-col justify-between gap-5 shadow-lg">

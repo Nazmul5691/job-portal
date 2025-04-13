@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import UseAuth from "../hooks/UseAuth";
 
 
@@ -7,6 +7,7 @@ const JobApply = () => {
     // console.log(id);
     const {user} = UseAuth()
     console.log(user);
+    const navigate = useNavigate()
 
 
     const handleApply = e =>{
@@ -39,6 +40,7 @@ const JobApply = () => {
             console.log(data);
             if(data.insertedId){
                 alert('apply success')
+                navigate('/myApplications')
             }
         })
     }

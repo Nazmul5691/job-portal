@@ -1,15 +1,17 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 export default function Navbar() {
 
     const { user, logOutUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleLogOutUser = () => {
         logOutUser()
             .then(result => {
                 console.log('user log out');
+                navigate('/')
             })
             .catch(error => {
                 console.log(error.message);
@@ -19,8 +21,9 @@ export default function Navbar() {
 
     const navItems = <>
         <li><NavLink to='/'> Home </NavLink></li>
-        <li><NavLink to='/'> Home </NavLink></li>
-        <li><NavLink to='/'> Home </NavLink></li>
+        <li><NavLink to='/myApplications'> My Applications </NavLink></li>
+        <li><NavLink to='/addJobs'> Add Jobs </NavLink></li>
+        <li><NavLink to='/myPostedJobs'> My Posted Jobs </NavLink></li>
 
     </>
     return (
