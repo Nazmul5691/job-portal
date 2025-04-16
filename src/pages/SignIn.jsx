@@ -30,7 +30,7 @@ const SignIn = () => {
             .then(result => {
                 console.log('sign in user', result.user);
 
-                // const user = {email: email}
+                const user = {email: email}
 
                 axios.post('http://localhost:5000/jwt',user, {withCredentials: true})
                 .then(res =>{
@@ -51,7 +51,7 @@ const SignIn = () => {
                     <Lottie animationData={registration}></Lottie>
                 </div>
                 <Form onSubmit={handleSignIn} className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <h1 className="text-2xl font-bold p-6 text-center">Sign In</h1>
+                    <h1 className="text-2xl font-bold p-6 text-center text-blue-500">Sign In</h1>
                     <div className="card-body">
                         <fieldset className="fieldset">
                             <label className="fieldset-label">Email</label>
