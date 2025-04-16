@@ -19,7 +19,7 @@ const AddJobs = () => {
         // newJob.hr_email = user.email
         console.log(newJob);
 
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://job-portal-server-lilac-phi.vercel.app/jobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

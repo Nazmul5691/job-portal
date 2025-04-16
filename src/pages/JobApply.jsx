@@ -28,7 +28,7 @@ const JobApply = () => {
 
         }
 
-        fetch('http://localhost:5000/job-applications',{
+        fetch('https://job-portal-server-lilac-phi.vercel.app/job-applications',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
