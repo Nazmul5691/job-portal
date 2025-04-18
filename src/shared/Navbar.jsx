@@ -21,6 +21,7 @@ export default function Navbar() {
 
     const navItems = <>
         <li><NavLink to='/'> Home </NavLink></li>
+        <li><NavLink to='/jobs'> All Jobs </NavLink></li>
         <li><NavLink to='/myApplications'> My Applications </NavLink></li>
         <li><NavLink to='/addJobs'> Add Jobs </NavLink></li>
         <li><NavLink to='/myPostedJobs'> My Posted Jobs </NavLink></li>
