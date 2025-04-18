@@ -13,7 +13,7 @@ const AddJobs = () => {
         const initialData = Object.fromEntries(formData.entries())
         console.log(initialData);
         const { min, max, currency, ...newJob } = initialData
-        newJob.salaryRange = { min, max, currency }
+        newJob.salaryRange = { min: parseInt(min), max: parseInt(max), currency }
         newJob.requirements = newJob.requirements.split('\n')
         newJob.responsibilities = newJob.responsibilities.split('\n')
         // newJob.hr_email = user.email
@@ -82,8 +82,8 @@ const AddJobs = () => {
                             {/* Salary Range */}
                             <label className="fieldset-label mt-2">Salary Range</label>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                                <input type="text" name="min" className="input w-full" placeholder="Minimum Salary" required />
-                                <input type="text" name="max" className="input w-full" placeholder="Maximum Salary" required />
+                                <input type="number" name="min" className="input w-full" placeholder="Minimum Salary" required />
+                                <input type="number" name="max" className="input w-full" placeholder="Maximum Salary" required />
                                 <select name="currency" defaultValue='Select Currency' className="select w-full" required>
                                     <option disabled >Select Currency</option>
                                     <option value="USD">USD</option>
